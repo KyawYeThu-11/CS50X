@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Homepage
+{% endblock %}
+
+{% block main %}
+    <table class="table table-dark table-hover">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Company_ame</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in plugin_rows %}
+                <tr>
+                    <td>{{ row.symbol }}</td>
+                    <td>{{ row.company_name }}</td>
+                    <td>{{ row.shares }}</td>
+                    <td>{{ row.price | usd }}</td>
+                    <td>{{ row.total | usd }}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td>CASH</td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td>
+                    {% for cash in plugin_remaining %}
+                         {{ cash.cash | usd }}
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td> {{ plugin_money | usd }} </td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

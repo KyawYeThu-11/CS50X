@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){
+
+                document.querySelector('#check').onclick = function(){
+                    var answer = document.querySelector('#answer').value;
+                    if (answer == "2017")
+                    {
+                        var text = document.querySelector('#right2');
+                        var text2 = document.querySelector('#wrong2');
+
+                        text2.style.display = "none";
+                        text.style.display = "block";
+                    }
+                    else
+                    {
+                        var text = document.querySelector('#right2');
+                        var text2 = document.querySelector('#wrong2');
+
+                        text.style.display = "none";
+                        text2.style.display = "block";
+                    }
+                };
+
+                document.querySelector('#false1').onclick = function(){
+
+                    var button = document.querySelector('#false1');
+                    var text = document.querySelector('#wrong');
+                    var text2 = document.querySelector('#right');
+
+                    button.style.backgroundColor = 'red';
+                    text2.style.display = "none";
+                    text.style.display = "block";
+
+                };
+
+                 document.querySelector('#false2').onclick = function(){
+                    var button = document.querySelector('#false2');
+                    var text = document.querySelector('#wrong');
+                    var text2 = document.querySelector('#right');
+
+                    button.style.backgroundColor = 'red';
+                    text2.style.display = "none";
+                    text.style.display = "block";
+                };
+
+                 document.querySelector('#false3').onclick = function(){
+                    var button = document.querySelector('#false3');
+                    var text = document.querySelector('#wrong');
+                    var text2 = document.querySelector('#right');
+
+                    button.style.backgroundColor = 'red';
+                    text2.style.display = "none";
+                    text.style.display = "block";
+                };
+
+                 document.querySelector('#false4').onclick = function(){
+                    var button = document.querySelector('#false4');
+                    var text = document.querySelector('#wrong');
+                    var text2 = document.querySelector('#right');
+
+                    button.style.backgroundColor = 'red';
+                    text2.style.display = "none";
+                    text.style.display = "block";
+                };
+
+                document.querySelector('#true').onclick = function(){
+                    var button = document.querySelector('#true');
+                    var text = document.querySelector('#right');
+                    var text2 = document.querySelector('#wrong');
+
+                    button.style.backgroundColor = '#66ff66';
+                    text2.style.display = "none";
+                    text.style.display = "block";
+                };
+            });
+
+
+
+        </script>
+
+    </head>
+    <body>
+
+        <div class="jumbotron">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>
+                    What does KYT want most right now?
+                </h3>
+                <h4 id="wrong">
+                    Not Quite!
+                </h4>
+                <h4 id="right">
+                    Excellent!
+                </h4>
+
+                <div id="button">
+                    <button type="button" id="false1">Scholarship</button>
+                    <button type="button" id="false2">Another RAM Slot</button>
+                    <button type="button" id="false3">Girlfriend</button>
+                    <button type="button" id="true">Democracy for Myanmar</button>
+                    <button type="button" id="false4">Chance to Play Soccer</button>
+                </div>
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>
+                    Which year was the most memorable year for KYT?
+                </h3>
+                <h4 id = "right2">
+                    Yeah, 2017 is filled with ample sweetness and excitement.
+                </h4>
+                <h4 id = "wrong2">
+                    Not Quite!
+                </h4>
+
+                <div>
+                    <input autocomplete="off" placeholder="2003, etc." type = "text" id= "answer">
+                    <button type ="button" id="check"> Check Answer</button>
+                </div>
+
+            </div>
+
+        </div>
+    </body>
+</html>

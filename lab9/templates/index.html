@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <!-- Accessing Bootstrap -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+        <title>Birthdays</title>
+    </head>
+    <body>
+        <!-- To invoke different alert texts-->
+        <p class="condition" style="display:none;">{{ plugin_condition }}</p>
+        <div class="jumbotron">
+            <h1>Birthdays</h1>
+        </div>
+        <div class="container">
+            <div class="section">
+                <h2>Add a Birthday</h2>
+                <form action="/" method="post">
+                    <input type="text" name="pname" autocomplete="off" placeholder="Name">
+                    <input type="number" name="pmonth" autocomplete="off" placeholder="Month">
+                    <input type="number" name="pday" autocomplete="off" placeholder="Day">
+                    <input type="submit" value="Add Birthday">
+                </form>
+            </div>
+
+            <div class="section">
+                <h2>All Birthdays</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Birthday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Loop through the database entries to display them in this table -->
+                        {% for dict in plugin_row %}
+                            <tr>
+                                <td>{{ dict.id }}</td>
+                                <td>{{ dict.name }}</td>
+                                <td>{{ dict.month }} / {{dict.day }}</td>
+                                <td class>
+                                    <!--Edit (Bootstrap Modal)-->
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Edit </button>
+
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                          </div>
+
+                                          <!-- Actual Form of Modal-->
+                                          <form action="/" method="post">
+                                              <div class="modal-body">
+                                                <input id="name" value="{{ dict.name }}" type="text" name="mname" autocomplete="off" placeholder="Name"><br>
+                                                <input id="month" value="{{ dict.month }}" type="number" name="mmonth" autocomplete="off" placeholder="Month"><br>
+                                                <input id="day" value="{{ dict.day }}" type="number" name="mday" autocomplete="off" placeholder="Day"><br>
+                                              </div>
+                                              <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" name="medit" value="{{ dict.id }}" class="btn btn-primary">Save changes</button>
+                                              </div>
+                                          </form>
+
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- Delete -->
+                                    <form action="/" method="post">
+                                        <button type="submit" name="pdelete" value="{{ dict.id }}" class="btn btn-danger"> - </button>
+                                    </form>
+
+                                </td>
+                            </tr>
+                        {% endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <script>
+
+            var function_structure = {
+                alert_function: function(){
+                    let condition = document.querySelector('.condition').innerHTML;
+
+                    if (condition == "1")
+                    {
+                        alert('Please ensure to fill "Name" field.');
+                    }
+                    if (condition == "2")
+                    {
+                        alert('Please ensure to fill "Month" field or enter valid month.');
+                    }
+                    if (condition == "3")
+                    {
+                        alert('Please ensure to fill "Day" field or enter valid day.');
+                    }
+                }
+
+            }
+
+            var condition = document.querySelector('.condition').innerHTML;
+            if (condition == "1" || condition == "2" || condition == "3")
+            {
+                function_structure.alert_function.call();
+            }
+
+        </script>
+    </body>
+</html>

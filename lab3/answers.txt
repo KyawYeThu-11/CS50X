@@ -1,0 +1,11 @@
+sort1 uses: bubble sort
+
+How do you know?: Testing with sorted(upper bond) files, sort1 stands first. Testing with reversed(lower bond), sort1 stands last. Testing with randomn sort1 stands last.
+
+sort2 uses: merge sort
+
+How do you know?: Testing with sorted(upper bond) files, sort2 stands second, albeit almost identical to sort1 running time. Testing with reversed(lower bond), sort2 stands first. Testing with randomn sort2 stands first.
+
+sort3 uses: selection sort
+
+How do you know?: Testing with sorted(upper bond) files, sort3 stands third. Testing with reversed(lower bond), sort3 stands second. Testing with randomn sort3 stands second.

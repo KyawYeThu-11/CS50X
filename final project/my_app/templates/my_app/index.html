@@ -1,0 +1,166 @@
+{% extends 'my_app/layout.html' %} {% load static %} {% block body %}
+<div class="webpage" id="homepage">
+  <div class="home-header" style="background-image: url({{heading.image}})">
+    <div class="navigation home-navbar">
+      <a class="homenav-link" data-page="gallery">Gallery</a>
+      <a class="homenav-link" data-page="blog">Blog</a>
+      <a class="homenav-link" data-page="home">Home</a>
+    </div>
+    
+    <div class="title text-center">
+      <img src="{{logo.image}}" alt="logo"><br>
+      <h1>{{sub_title.text}}</h1>  
+    </div>
+    <div class="home-overlay"></div>
+  </div>
+    <div class="container-lg">
+        <section class="section" id="section--1">
+          <div class="section-title">
+            <h3 class="section-description">{{ one_text.name }}</h3>
+            <h2 class="section-header">
+              {{ one_text.text }}
+            </h2>
+          </div>
+          <br><br><br>
+          <div class="row text-center" id="row--1">
+            <div class="section__one-text col-md-6 col-12"">
+              <div>
+                <h2>{{ oneA_text.name }}</h2>
+               {{ oneA_text.text|safe|linebreaks }}
+              </div>
+            </div>
+            <div class="section__one-image col-md-6 col-12"">
+              <img
+                src="{{ one.image }}"
+                alt="{{ one.name }}"
+              />
+            </div>
+          </div>
+
+          <br><br><br><br><br>
+          <div class="row text-center" id="row--2">
+            <div class="section__one-image col-md-6 col-12"">
+              <img
+                src="{{ two.image }}"
+                alt="{{ two.name }}"
+              />
+            </div>
+            <div class="section__one-text col-md-6 col-12"">
+              <div>
+                <h2>{{ oneB_text.name }}</h2>
+               {{ oneB_text.text|safe|linebreaks }}
+              </div>
+            </div>
+          </div>
+        </section>
+    </div>
+      <div class="container-fluid">
+          <section class="section" id="section--2">
+            <div class="section-title">
+              <h3 class="section-description">{{ two_text.name }}</h3>
+              <h2 class="section-header">
+               {{ two_text.text }}
+              </h2>
+            </div>
+            <br><br><br>
+            <div class="statistics row text-center">
+              {% for icon in statistics %}
+              <div class="col-sm-3 col-4 col-6">
+                <div class="statistics_card">
+                  <img src="{{ icon.icon }}" alt="{{ icon.unit }}">
+                  <h2 class="statistics_number">{{ icon.number }}</h2>
+                  <h4>{{ icon.unit }}</h4>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </section>
+      </div>
+      <div class="container-lg">
+        <section class="section" id="section--3">
+          <div class="section-title">
+            <h3 class="section-description">{{ three_text.name }}</h3>
+            <h2 class="section-header">
+              {{ three_text.text }}
+            </h3>
+          </div>
+          <br><br>
+          <div class="category_cards-container row text-center">
+              {% for category in blog_categories %}
+              <div class="category_card col-md-4 col-sm-6 col-12">
+                  <img src="{{ category.image }}" alt="{{ category.title }}" width="150"><br><br>
+                  <h3>{{ category.title }}</h3>
+                  <p>{{ category.text|safe|linebreaks }}</p>
+                  <hr>
+                  <a class="explore-link" data-category={{category.id}}>Explore &rarr;</a>
+              </div>
+              {% endfor %}
+          </div>
+        </section>
+
+        <section class="section" id="section--4">
+          <div class="section-title">
+            <h2 class="section-description">{{ four_text.name }}</h2>
+            <h3 class="section-header">
+              {{ four_text.text }}
+            </h3>
+          </div>
+          <div class="home-slider">
+              {% for slide in slides %}
+              <div class="home-slide slide--{{ slide.id }}">
+                  <object data='{{ slide.link }}'>
+                  </object>
+              </div>
+              {% endfor %}
+            <button class="slider__btn slider__btn--left">&larr;</button>
+            <button class="slider__btn slider__btn--right">&rarr;</button>
+            <div class="dots"></div>
+          </div>
+        </section>
+      </div>
+      <section class="section" id="pre-footer">
+        <div class="section-title">
+          <h3 class="section-header">
+            {{ button.text }}
+          </h3>
+        </div>
+        <button class="btn btn-outline-secondary outline-btn pre-footer-btn"><h5>{{ button.name }}</h5></button>
+      </section>
+</div>
+<div class="webpage container-lg" id="blogPage" style="display:none">
+  <div class="blog-header">
+    <div class="category-tabs-container">
+      <div class="category__link--container text-center"></div>
+      <!-- Dropdown -->
+      <div class="btn-group dropdown" style="display: none;">
+        <button
+          type="button"
+          class="btn btn-lg dropdown-toggle"
+          data-bs-toggle="dropdown"
+          data-bs-display="static"
+          aria-expanded="false"
+        >
+          Categories
+        </button>
+        <ul class="dropdown-menu text-center"></ul>
+      </div>
+    </div>
+    <br />
+    <div class="category-intro text-center"></div>
+  </div>
+  
+  <br />
+  <div class="row articles-container"></div>
+  <br /><br />
+  
+  <!-- Pagination -->
+  <nav aria-label="Page navigation example">
+    <ul class="pagination"></ul>
+  </nav>
+</div>
+<div class="webpage" id="articlePage" style="display:none">
+</div>
+<div class="webpage container-fluid" id="galleryPage" style="display:none">
+  <section class="gallery-section text-center"></section>
+</div>
+{% endblock %}

@@ -1,0 +1,2 @@
+SELECT title FROM people JOIN stars JOIN movies JOIN ratings ON people.id = stars.person_id AND stars.movie_id = movies.id
+AND movies.id = ratings.movie_id WHERE name = "Chadwick Boseman" ORDER BY rating DESC LIMIT 5;
