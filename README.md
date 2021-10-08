@@ -46,4 +46,4 @@ This repository contains the source code for nine labs, nine problem sets, and t
 
 # Certificate
 
-![d](https://certificates.cs50.io/ba55a90d-310d-4cbc-9af0-330785642440.png)
+![](https://certificates.cs50.io/ba55a90d-310d-4cbc-9af0-330785642440.png)
