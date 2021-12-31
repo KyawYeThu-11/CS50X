@@ -46,4 +46,4 @@ This repository contains the source code for nine labs, nine problem sets, and t
 
 # Certificate
 
-![CS50's Introduction to Computer Science Certificate](https://certificates.cs50.io/ba55a90d-310d-4cbc-9af0-330785642440.png)
+![CS50's Introduction to Computer Science Certificate](https://github.com/KyawYeThu-11/CS50X/blob/master/CS50X_certificate.png)
